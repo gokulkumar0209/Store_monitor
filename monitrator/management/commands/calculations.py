@@ -12,13 +12,34 @@ class Command(BaseCommand):
         last_week = now - timedelta(weeks=1)
 
         all_stores = Store.objects.all()
+        i=0
         for store in all_stores:
             store_id = store.store_id
 
             # Get all active status records for the store
             # active_statuses = StoreStatus.objects.filter(store_id=store_id, status='active')
             # print(active_statuses)
-            business_hours=Men
+            uptime=0
+            downtime=0
+            total=0
+            business_hours=MenuHours.objects.filter(store_id=store_id)
+            
+            for business_hour in business_hours:
+                s=str(business_hour.end_time_local)
+                t1=datetime.strptime(s,'%H:%M:%S')
+                print(t1)
+            i=i+1
+            if i==1:
+                break
+            #     if now > business_hour.start_time_local>last_hour :
+            #         uptime = now-business_hour.start_time_local
+            #         if now>business_hour.end_time_local :
+            #             downtime=now-business_hour.end_time_local
+            #             active=uptime-downtime  
+            #         else:
+            #             active=now-uptime   
+            #     total=total+active 
+            # print(total)           
         #     # Calculate uptime and downtime for the last hour
         #     active_last_hour = active_statuses.filter(timestamp_utc__gte=last_hour)
         #     uptime_last_hour = active_last_hour.count()
