@@ -41,4 +41,13 @@ class StoreMetrics(models.Model):
 
     def __str__(self):
         return f"Metrics for Store {self.store.store_id}"
+
+
+class Report(models.Model):
+    report_id = models.CharField(max_length=10, unique=True)
+    status = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"Report ID: {self.report_id}, Status: {self.status}"
+    
      
