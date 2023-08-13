@@ -29,4 +29,16 @@ class StoreStatus(models.Model):
     timestamp_utc = models.DateTimeField()
 
     def __str__(self):
-        return f"Store: {self.store_id}, Status: {self.status}, Timestamp: {self.timestamp_utc}"    
+        return f"Store: {self.store_id}, Status: {self.status}, Timestamp: {self.timestamp_utc}"   
+class StoreMetrics(models.Model):
+    store = models.ForeignKey('Store', on_delete=models.CASCADE)
+    uptime_last_hour = models.FloatField()
+    uptime_last_day = models.FloatField()
+    uptime_last_week = models.FloatField()
+    downtime_last_hour = models.FloatField()
+    downtime_last_day = models.FloatField()
+    downtime_last_week = models.FloatField()
+
+    def __str__(self):
+        return f"Metrics for Store {self.store.store_id}"
+     

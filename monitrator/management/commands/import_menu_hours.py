@@ -20,9 +20,7 @@ class Command(BaseCommand):
             csv_reader = csv.DictReader(csv_file)
             i = 0
             for row in csv_reader:
-                i += 1
-                if i == 2500:
-                    break
+                
 
                 # Extract store_id from the menu_hours CSV
                 store_id = int(Decimal(row['store_id']))

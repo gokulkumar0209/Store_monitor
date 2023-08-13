@@ -18,9 +18,7 @@ class Command(BaseCommand):
             i = 0
             for row in csv_reader:
                 print(row)
-                i += 1
-                if i == 4000:
-                    break
+ 
                 store_id = int(Decimal(row['store_id']))
                 status = row['status']
                 timestamp_utc = datetime.strptime(row['timestamp_utc'], '%Y-%m-%d %H:%M:%S.%f %Z')
